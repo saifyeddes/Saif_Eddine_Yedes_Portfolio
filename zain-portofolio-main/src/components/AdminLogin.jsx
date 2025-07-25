@@ -176,7 +176,7 @@ const AdminLogin = ({ isOpen, onClose, onSuccess }) => {
                 >
                   <FaClock className="text-orange-400 flex-shrink-0" />
                   <div className="text-orange-300 text-sm">
-                    <p>Account terkunci</p>
+                    <p>Account locked</p>
                     <p className="font-mono">
                       {Math.floor(lockoutTimer / 60)}:{String(lockoutTimer % 60).padStart(2, '0')}
                     </p>

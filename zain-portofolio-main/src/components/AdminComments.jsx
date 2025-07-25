@@ -284,7 +284,7 @@ const AdminComments = ({ isOpen, onClose }) => {
                         </p>
                         <div className="flex items-center justify-between">
                           <p className="text-slate-500 text-xs">
-                            {new Date(comment.timestamp).toLocaleDateString('id-ID', {
+                            {new Date(comment.timestamp).toLocaleDateString('en-US', {
                               year: 'numeric',
                               month: 'short',
                               day: 'numeric',
@@ -323,7 +323,7 @@ const AdminComments = ({ isOpen, onClose }) => {
                           {selectedComment.name}
                         </h3>
                         <p className="text-slate-400 text-sm mb-2">
-                          {new Date(selectedComment.timestamp).toLocaleDateString('id-ID', {
+                          {new Date(selectedComment.timestamp).toLocaleDateString('en-US', {
                             year: 'numeric',
                             month: 'long',
                             day: 'numeric',

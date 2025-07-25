@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
 import { FaExternalLinkAlt, FaReact, FaNodeJs, FaHtml5, FaCss3Alt, 
-  FaJsSquare, FaTools, FaFigma, FaGithub, FaTimes, FaDownload, FaBriefcase
+  FaJsSquare, FaTools, FaFigma, FaGithub, FaTimes, FaDownload, FaBriefcase, FaGraduationCap
 } from 'react-icons/fa';
 import { 
   SiTailwindcss, SiNextdotjs, SiVercel, SiMongodb, 
@@ -14,12 +14,12 @@ import { LiaLayerGroupSolid } from "react-icons/lia";
 import { useNavbar } from '../contexts/NavbarContext';
 
 // ===================================
-// DATA PROYEK (CONTOH)
+// PROJECT DATA (EXAMPLE)
 // ===================================
 const dummyProjects = [
     {
     title: "Portfolio v2",
-    description: "Website portofolio pribadi yang dibangun dengan React, Next.js, dan Tailwind CSS, di-deploy di Vercel.",
+    description: "Personal portfolio website built with React, Next.js, and Tailwind CSS, deployed on Vercel.",
     tech: ["Next.js", "React", "TailwindCSS", "Framer Motion"],
     link: "https://github.com/username/portfolio",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop",
@@ -27,7 +27,7 @@ const dummyProjects = [
   },
   {
     title: "E-Commerce API",
-    description: "RESTful API untuk platform e-commerce dengan fitur otentikasi, manajemen produk, dan transaksi.",
+    description: "RESTful API for e-commerce platform with authentication, product management, and transaction features.",
     tech: ["Node.js", "Express", "MongoDB", "JWT"],
     link: "https://github.com/username/ecommerce-api",
     image: "https://images.unsplash.com/photo-1522199755839-a2bacb67c546?q=80&w=2072&auto=format&fit=crop",
@@ -35,7 +35,7 @@ const dummyProjects = [
   },
   {
     title: "UI Design System",
-    description: "Merancang komponen UI yang reusable dan konsisten untuk aplikasi web menggunakan Figma.",
+    description: "Designing reusable and consistent UI components for web applications using Figma.",
     tech: ["Figma", "Storybook"],
     link: "#",
     image: "https://images.unsplash.com/photo-1600132806378-62402124d9e0?q=80&w=2070&auto=format&fit=crop",
@@ -43,7 +43,7 @@ const dummyProjects = [
   },
   {
     title: "3D Product Visualization",
-    description: "Desain 3D interaktif untuk showcase produk menggunakan Spline dan Blender.",
+    description: "Interactive 3D design for product showcase using Spline and Blender.",
     tech: ["Spline", "Blender"],
     link: "#",
     image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop",
@@ -51,7 +51,7 @@ const dummyProjects = [
   },
   {
     title: "Animated 3D Landing",
-    description: "Landing page dengan elemen 3D animasi untuk branding modern.",
+    description: "Landing page with animated 3D elements for modern branding.",
     tech: ["Spline", "Three.js"],
     link: "#",
     image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?q=80&w=2070&auto=format&fit=crop",
@@ -60,7 +60,7 @@ const dummyProjects = [
 ];
 
 // ===================================
-// DATA SERTIFIKAT
+// CERTIFICATE DATA
 // ===================================
 const userCertificates = [
     {
@@ -157,7 +157,7 @@ const userCertificates = [
 ];
 
 // ===================================
-// DATA PENGALAMAN
+// EXPERIENCE DATA
 // ===================================
 const experiences = [
   {
@@ -229,7 +229,7 @@ const experiences = [
 
 
 // ===================================
-// KOMPONEN KARTU SERTIFIKAT
+// CERTIFICATE CARD COMPONENT
 // ===================================
 const CertificateCard = ({ cert, onClick }) => {
     return (
@@ -281,7 +281,7 @@ const CertificateCard = ({ cert, onClick }) => {
 };
 
 // ===================================
-// KOMPONEN PREVIEW MODAL SERTIFIKAT
+// CERTIFICATE PREVIEW MODAL COMPONENT
 // ===================================
 const CertificatePreviewModal = ({ certificate, onClose }) => {
     if (!certificate) return null;
@@ -335,7 +335,7 @@ const CertificatePreviewModal = ({ certificate, onClose }) => {
 };
 
 // ===================================
-// KOMPONEN KARTU PROYEK
+// PROJECT CARD COMPONENT
 // ===================================
 const ProjectCard = ({ project }) => {
     const techIcons = {
@@ -372,7 +372,7 @@ const ProjectCard = ({ project }) => {
 };
 
 // ===================================
-// KOMPONEN KARTU PENGALAMAN
+// EXPERIENCE CARD COMPONENT
 // ===================================
 const ExperienceCard = ({ experience }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -511,7 +511,7 @@ const ExperienceCard = ({ experience }) => {
 
 
 // ===================================
-// KOMPONEN TEKNOLOGI
+// TECHNOLOGY COMPONENT
 // ===================================
 const techStack = {
     frontend: [
@@ -534,12 +534,12 @@ const techStack = {
     { name: "Git & GitHub", icon: <FaGithub className="text-white" /> },
     { name: "Vercel", icon: <SiVercel className="text-white" /> },
     { name: "Figma", icon: <FaFigma className="text-[#F24E1E]" /> },
-    { name: "Tools Lain", icon: <FaTools className="text-gray-400" /> },
+    { name: "Other Tools", icon: <FaTools className="text-gray-400" /> },
   ],
 };
 
 // ===================================
-// KOMPOSEN LINE SHADOW TEXT
+// LINE SHADOW TEXT COMPONENT
 // ===================================
 const LineShadowText = ({ children, shadowColor = '#00ffdc' }) => {
   return (
@@ -562,7 +562,115 @@ const LineShadowText = ({ children, shadowColor = '#00ffdc' }) => {
 };
 
 // ===================================
-// KOMPONEN UTAMA
+// EDUCATION DATA
+// ===================================
+const educationData = [
+  {
+    id: 1,
+    degree: "Engineering Degree",
+    institution: "Private Higher School of Technologies and Engineering – TEK-UP",
+    duration: "10/2023 – 06/2026",
+    location: "Ariana, Tunisia",
+    description: [
+      "Pursuing advanced studies in engineering with a focus on modern technologies",
+      "Engaging in practical projects and research initiatives"
+    ]
+  },
+  {
+    id: 2,
+    degree: "Bachelor's Degree",
+    institution: "Higher Institute of Computer Science and Multimedia",
+    specialization: "Computer Science and Multimedia",
+    duration: "09/2020 – 06/2023",
+    location: "Sfax, Tunisia",
+    description: [
+      "Specialized in Computer Science and Multimedia technologies",
+      "Completed comprehensive coursework in software development and multimedia design"
+    ]
+  }
+];
+
+// ===================================
+// EDUCATION CARD COMPONENT
+// ===================================
+const EducationCard = ({ education }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div 
+      className="relative bg-gradient-to-br from-indigo-900/80 to-slate-900/90 rounded-xl p-6 border border-slate-700/50 hover:border-purple-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10 overflow-hidden"
+      whileHover={{ y: -2, borderColor: 'rgba(139, 92, 246, 0.5)' }}
+      initial={false}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+    >
+      {/* Glow effect */}
+      <div className={`absolute inset-0 bg-gradient-to-br from-purple-500/10 to-indigo-500/10 rounded-xl opacity-0 transition-opacity duration-300 ${isHovered ? 'opacity-100' : ''}`}></div>
+      
+      <div className="relative z-10">
+        <div className="flex justify-between items-start">
+          <div>
+            <h3 className="text-xl font-bold text-white mb-1">{education.degree}</h3>
+            <p className="text-purple-300 font-medium text-sm mb-1">{education.institution}</p>
+            {education.specialization && (
+              <p className="text-purple-200 text-xs mb-2">{education.specialization}</p>
+            )}
+            <div className="flex items-center gap-2 text-xs text-slate-300 mb-3">
+              <span>{education.duration}</span>
+              <span className="text-slate-500">•</span>
+              <span className="text-slate-400">{education.location}</span>
+            </div>
+          </div>
+          <div className="text-2xl text-purple-400">
+            <FaGraduationCap />
+          </div>
+        </div>
+        
+        <div className="space-y-2 mt-3">
+          {education.description.slice(0, isExpanded ? education.description.length : 1).map((item, i) => (
+            <motion.p 
+              key={i}
+              className="text-slate-300 text-sm leading-relaxed"
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.1 }}
+            >
+              {item}
+            </motion.p>
+          ))}
+          
+          {education.description.length > 1 && (
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="text-purple-400 text-xs font-medium flex items-center gap-1 hover:text-purple-300 transition-colors mt-2"
+            >
+              {isExpanded ? 'Show Less' : 'Read More'}
+              <motion.span
+                animate={{
+                  rotate: isExpanded ? 180 : 0,
+                }}
+                transition={{ duration: 0.3 }}
+              >
+                <svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="h-3 w-3" 
+                  viewBox="0 0 20 20" 
+                  fill="currentColor"
+                >
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </motion.span>
+            </button>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+// ===================================
+// MAIN COMPONENT
 // ===================================
 function ProjectSection() {
   const [activeTab, setActiveTab] = useState('Projects');
@@ -588,6 +696,7 @@ function ProjectSection() {
 
   const tabs = [
     { id: 'Experience', label: 'Experience', icon: <FaBriefcase className="text-[1.5em] mb-1" /> },
+    { id: 'Education', label: 'Education', icon: <FaGraduationCap className="text-[1.5em] mb-1" /> },
     { id: 'Projects', label: 'Projects', icon: <PiCodeBold className="text-[1.7em] mb-1" /> },
     { id: 'Certificate', label: 'Certificates', icon: <LuBadge className="text-[1.7em] mb-1" /> },
     { id: 'Tech Stack', label: 'Tech Stack', icon: <LiaLayerGroupSolid className="text-[1.7em] mb-1" /> },
@@ -597,7 +706,7 @@ function ProjectSection() {
     (p) => p.category === projectCategory
   );
 
-  // === CHANGE START: Handler untuk tombol Show More/Less ===
+  // Handler for Show More/Less buttons
   const handleShowMore = () => {
     setVisibleCertificatesCount(userCertificates.length);
   };
@@ -605,7 +714,6 @@ function ProjectSection() {
   const handleShowLess = () => {
     setVisibleCertificatesCount(INITIAL_CERTIFICATES_TO_SHOW);
   };
-  // === CHANGE END ===
 
   return (
     <section id="project" className="py-20">
@@ -749,17 +857,31 @@ function ProjectSection() {
                   </div>
                 </div>
               )}
+              {activeTab === 'Education' && (
+                <div className="space-y-8">
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    {educationData.map((education, index) => (
+                      <motion.div
+                        key={education.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1, duration: 0.5 }}
+                      >
+                        <EducationCard education={education} />
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              )}
               {activeTab === 'Certificate' && (
                 <div className="space-y-8">
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                    {/* === CHANGE: Menggunakan slice untuk menampilkan sertifikat yang terlihat === */}
                     <AnimatePresence>
                       {userCertificates.slice(0, visibleCertificatesCount).map((cert, i) => (
                         <CertificateCard key={i} cert={cert} onClick={setPreviewCertificate} />
                       ))}
                     </AnimatePresence>
                   </div>
-                  {/* === CHANGE START: Menambahkan tombol Show More/Less secara kondisional === */}
                   {userCertificates.length > INITIAL_CERTIFICATES_TO_SHOW && (
                     <div className="flex justify-center mt-12">
                       {visibleCertificatesCount < userCertificates.length ? (
@@ -783,7 +905,7 @@ function ProjectSection() {
                       )}
                     </div>
                   )}
-                  {/* === CHANGE END === */}
+
                 </div>
               )}
               {activeTab === 'Tech Stack' && (

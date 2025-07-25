@@ -119,7 +119,7 @@ const AdminMessages = ({ isOpen, onClose }) => {
                 </div>
               </div>
               <p className="text-slate-400">
-                {messages.length} messages, {unreadCount} unread
+                {messages.length} {messages.length === 1 ? 'message' : 'messages'}, {unreadCount} unread
               </p>
             </div>
           </div>
@@ -197,7 +197,7 @@ const AdminMessages = ({ isOpen, onClose }) => {
                         <p className="text-slate-400 text-sm truncate mb-2">{message.email}</p>
                         <p className="text-slate-300 text-sm line-clamp-2">{message.message}</p>
                         <p className="text-slate-500 text-xs mt-2">
-                          {new Date(message.timestamp).toLocaleDateString('id-ID', {
+                          {new Date(message.timestamp).toLocaleDateString('en-US', {
                             year: 'numeric',
                             month: 'short',
                             day: 'numeric',
@@ -229,7 +229,7 @@ const AdminMessages = ({ isOpen, onClose }) => {
                       </h3>
                       <p className="text-cyan-400 mb-1">{selectedMessage.email}</p>
                       <p className="text-slate-400 text-sm">
-                        {new Date(selectedMessage.timestamp).toLocaleDateString('id-ID', {
+                        {new Date(selectedMessage.timestamp).toLocaleDateString('en-US', {
                           year: 'numeric',
                           month: 'long',
                           day: 'numeric',

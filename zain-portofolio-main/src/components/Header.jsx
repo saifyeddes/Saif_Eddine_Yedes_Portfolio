@@ -134,7 +134,7 @@ const Header = () => {
                     <div>
                       <h1 className="font-moderniz text-sm text-[#00ffdc] whitespace-nowrap">Saif Eddine Yedes</h1>
                       <p className="font-moderniz text-[9px] text-[#000754]" style={{ textShadow: '0.5px 0.5px 0 #00ffdc, -0.5px -0.5px 0 #00ffdc, 0.5px -0.5px 0 #00ffdc, -0.5px 0.5px 0 #00ffdc' }}>
-                        Let's see the awesome Experience
+                        Explore My Professional Journey
                       </p>
                     </div>
                   </a>
@@ -158,7 +158,7 @@ const Header = () => {
                     <div className="block">
                       <h1 className="font-moderniz text-base text-[#00ffdc]">Saif Eddine Yedes</h1>
                       <p className="font-moderniz text-[10px] text-[#000754]" style={{ textShadow: '0.5px 0.5px 0 #00ffdc, -0.5px -0.5px 0 #00ffdc, 0.5px -0.5px 0 #00ffdc, -0.5px 0.5px 0 #00ffdc' }}>
-                        Let's see the awesome Experience
+                        Explore My Professional Journey
                       </p>
                     </div>
                   </a>
@@ -166,7 +166,7 @@ const Header = () => {
                   {/* Desktop: Right Navigation & Admin Button */}
                   <div className="flex items-center gap-4">
                     <ul className="flex items-center list-none gap-16">
-                      <NavLink href="#projects">Project</NavLink>
+                      <NavLink href="#projects">Projects</NavLink>
                       <NavLink href="#contact">Contact</NavLink>
                     </ul>
                     <button
@@ -191,9 +191,9 @@ const Header = () => {
                     >
                       {/* This is the list that now appears in a row */}
                       <ul className="flex flex-row flex-wrap justify-center items-center gap-x-8 gap-y-3 mt-4 list-none">
-                        <NavLink href="#home">Home</NavLink>
-                        <NavLink href="#about">About</NavLink>
-                        <NavLink href="#projects">Project</NavLink>
+                        <NavLink href="#home">Accueil</NavLink>
+                        <NavLink href="#about">A propos</NavLink>
+                        <NavLink href="#projects">Projets</NavLink>
                         <NavLink href="#contact">Contact</NavLink>
                         <li>
                           <button

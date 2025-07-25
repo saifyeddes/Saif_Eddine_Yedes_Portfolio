@@ -19,11 +19,11 @@ import AdminMessages from './AdminMessages';
 import AdminLogin from './AdminLogin';
 import { useAdmin } from '../contexts/AdminContext';
 
-// JSON file untuk menyimpan comments
+// JSON file to store comments
 const COMMENTS_FILE = '/comments.json';
 
 const Contact = () => {
-  // States untuk contact form
+  // States for contact form
   const [contactForm, setContactForm] = useState({
     name: '',
     email: '',
@@ -31,7 +31,7 @@ const Contact = () => {
   });
   const [isSubmittingContact, setIsSubmittingContact] = useState(false);
 
-  // States untuk comments
+  // States for comments
   const [commentForm, setCommentForm] = useState({
     name: '',
     message: '',
@@ -45,7 +45,7 @@ const Contact = () => {
 
   const { isAuthenticated } = useAdmin();
 
-  // Load comments dari localStorage (simulasi JSON file)
+  // Load comments from localStorage (simulated JSON file)
   useEffect(() => {
     const savedComments = localStorage.getItem('portfolioComments');
     if (savedComments) {
@@ -53,12 +53,12 @@ const Contact = () => {
     }
   }, []);
 
-  // Handle contact form
+  // Handle contact form submission
   const handleContactSubmit = async (e) => {
     e.preventDefault();
     setIsSubmittingContact(true);
     
-    // Save message to localStorage (simulasi JSON file)
+    // Save message to localStorage (simulated JSON file)
     const newMessage = {
       id: Date.now(),
       name: contactForm.name,
@@ -73,15 +73,15 @@ const Contact = () => {
     const updatedMessages = [newMessage, ...messages];
     localStorage.setItem('portfolioContactMessages', JSON.stringify(updatedMessages));
     
-    // Simulasi pengiriman email
+    // Simulate email sending
     await new Promise(resolve => setTimeout(resolve, 2000));
     
-    alert('Pesan berhasil dikirim! Terima kasih telah menghubungi saya.');
+    alert('Message sent successfully! Thank you for reaching out to me.');
     setContactForm({ name: '', email: '', message: '' });
     setIsSubmittingContact(false);
   };
 
-  // Handle photo upload
+  // Handle photo upload for comments
   const handlePhotoUpload = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -97,7 +97,7 @@ const Contact = () => {
     }
   };
 
-  // Handle comment submit
+  // Handle comment submission
   const handleCommentSubmit = (e) => {
     e.preventDefault();
     if (!commentForm.name.trim() || !commentForm.message.trim()) return;
@@ -121,7 +121,7 @@ const Contact = () => {
     setIsSubmittingComment(false);
   };
 
-  // Handle like comment
+  // Handle comment like
   const handleLikeComment = (commentId) => {
     const updatedComments = comments.map(comment => 
       comment.id === commentId 
@@ -232,7 +232,7 @@ const Contact = () => {
                       <FaUser className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 group-focus-within:text-cyan-400 transition-colors duration-300" />
                       <input
                         type="text"
-                        placeholder="Nama Anda"
+                        placeholder="Your Name"
                         value={contactForm.name}
                         onChange={(e) => setContactForm(prev => ({ ...prev, name: e.target.value }))}
                         className="w-full pl-12 pr-4 py-4 bg-slate-800/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
@@ -246,7 +246,7 @@ const Contact = () => {
                       <FaEnvelope className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 group-focus-within:text-cyan-400 transition-colors duration-300" />
                       <input
                         type="email"
-                        placeholder="Email Anda"
+                        placeholder="Your Email"
                         value={contactForm.email}
                         onChange={(e) => setContactForm(prev => ({ ...prev, email: e.target.value }))}
                         className="w-full pl-12 pr-4 py-4 bg-slate-800/50 border border-slate-600/50 rounded-xl text-white placeholder-slate-400 focus:border-cyan-400 focus:ring-2 focus:ring-cyan-400/20 transition-all duration-300"
@@ -259,7 +259,7 @@ const Contact = () => {
                     <div className="relative">
                       <FaComment className="absolute left-4 top-6 text-slate-400 group-focus-within:text-cyan-400 transition-colors duration-300" />
                       <textarea
-                        placeholder="Pesan Anda"
+                        placeholder="Your Message"
                         rows="4"
                         value={contactForm.message}
                         onChange={(e) => setContactForm(prev => ({ ...prev, message: e.target.value }))}
@@ -281,7 +281,7 @@ const Contact = () => {
                     ) : (
                       <>
                         <FaPaperPlane />
-                        <span>Kirim Pesan</span>
+                        <span>Send Message</span>
                       </>
                     )}
                   </motion.button>
@@ -292,7 +292,7 @@ const Contact = () => {
             {/* Divider */}
             <div className="flex items-center gap-4">
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-slate-600 to-transparent"></div>
-              <span className="text-slate-400 font-semibold">atau</span>
+              <span className="text-slate-400 font-semibold">or</span>
               <div className="flex-1 h-px bg-gradient-to-r from-transparent via-slate-600 to-transparent"></div>
             </div>
 
@@ -447,7 +447,7 @@ const Contact = () => {
                             <div>
                               <h5 className="font-semibold text-white">{comment.name}</h5>
                               <p className="text-xs text-slate-400">
-                                {new Date(comment.timestamp).toLocaleDateString('id-ID', {
+                                {new Date(comment.timestamp).toLocaleDateString('en-US', {
                                   year: 'numeric',
                                   month: 'long',
                                   day: 'numeric',
@@ -476,7 +476,7 @@ const Contact = () => {
                 {comments.length === 0 && (
                   <div className="text-center py-12 text-slate-400">
                     <FaComment className="text-4xl mx-auto mb-4 opacity-50" />
-                    <p>Belum ada komentar. Jadilah yang pertama!</p>
+                    <p>No comments yet. Be the first to comment!</p>
                   </div>
                 )}
               </div>
