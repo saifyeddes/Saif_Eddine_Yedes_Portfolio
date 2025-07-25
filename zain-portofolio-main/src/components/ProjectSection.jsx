@@ -1,9 +1,8 @@
 // src/components/ProjectSection.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  FaExternalLinkAlt, FaReact, FaNodeJs, FaHtml5, FaCss3Alt, 
-  FaJsSquare, FaTools, FaFigma, FaGithub, FaTimes, FaDownload
+import { FaExternalLinkAlt, FaReact, FaNodeJs, FaHtml5, FaCss3Alt, 
+  FaJsSquare, FaTools, FaFigma, FaGithub, FaTimes, FaDownload, FaBriefcase
 } from 'react-icons/fa';
 import { 
   SiTailwindcss, SiNextdotjs, SiVercel, SiMongodb, 
@@ -60,7 +59,9 @@ const dummyProjects = [
   },
 ];
 
-
+// ===================================
+// DATA SERTIFIKAT
+// ===================================
 const userCertificates = [
     {
         title: "Belajar Membuat Aplikasi Web dengan React",
@@ -155,46 +156,77 @@ const userCertificates = [
     },
 ];
 
-const techStack = {
-    frontend: [
-    { name: "React", icon: <FaReact className="text-[#61DAFB]" /> },
-    { name: "Next.js", icon: <SiNextdotjs className="text-white" /> },
-    { name: "JavaScript", icon: <FaJsSquare className="text-[#F7DF1E]" /> },
-    { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#38B2AC]" /> },
-    { name: "HTML5", icon: <FaHtml5 className="text-[#E34F26]" /> },
-    { name: "CSS3", icon: <FaCss3Alt className="text-[#1572B6]" /> },
-  ],
-  backend: [
-    { name: "Node.js", icon: <FaNodeJs className="text-[#339933]" /> },
-    { name: "Express", icon: <SiExpress className="text-white" /> },
-  ],
-  database: [
-    { name: "MongoDB", icon: <SiMongodb className="text-[#47A248]" /> },
-    { name: "PostgreSQL", icon: <SiPostgresql className="text-[#336791]" /> },
-  ],
-  tools: [
-    { name: "Git & GitHub", icon: <FaGithub className="text-white" /> },
-    { name: "Vercel", icon: <SiVercel className="text-white" /> },
-    { name: "Figma", icon: <FaFigma className="text-[#F24E1E]" /> },
-    { name: "Tools Lain", icon: <FaTools className="text-gray-400" /> },
-  ],
-};
+// ===================================
+// DATA PENGALAMAN
+// ===================================
+const experiences = [
+  {
+    id: 1,
+    position: "Full Stack Developer",
+    company: "Confledis",
+    duration: "06/2025 – Present",
+    location: "Paris, Île-de-France, France",
+    description: [
+      "Designed and developed hybrid web and mobile applications with Angular (front-end) and Ionic.",
+      "Created secure and high-performance RESTful APIs with Symfony (back-end).",
+      "Implemented advanced features: authentication, user management, real-time interactions.",
+      "Deployed secure cloud infrastructures via AWS Amplify, managed push and clone operations.",
+      "Designed responsive and modern interfaces for optimal user experience.",
+      "Wrote unit tests and documentation ensuring code robustness and maintainability.",
+      "Agile collaboration, used Git for versioning and Jira for project management in coordination with stakeholders"
+    ],
+    technologies: ["Angular", "Ionic", "Symfony", "AWS", "Git", "Jira"],
+    icon: "💼"
+  },
+  {
+    id: 2,
+    position: "Full Stack Web Developer",
+    company: "POEMGROUP",
+    duration: "07/2024 – 10/2024",
+    location: "Antananarivo, Madagascar",
+    description: [
+      "Developed an Uber-like application with Vue.js (front-end) and Laravel (back-end).",
+      "Implemented authentication, booking, real-time tracking, and payment modules.",
+      "Integrated WebSockets for instant notifications.",
+      "Created a responsive, modern, and fluid user interface.",
+      "Wrote technical documentation and presented to stakeholders.",
+      "Managed version control with Git and task organization via Trello."
+    ],
+    technologies: ["Vue.js", "Laravel", "WebSockets", "Git", "Trello"],
+    icon: "🚕"
+  },
+  {
+    id: 3,
+    position: "MERN Stack Developer",
+    company: "DPOINTGROUP",
+    duration: "02/2023 – 06/2023",
+    location: "Barcelona, Spain",
+    description: [
+      "Built an e-commerce website with React.js, Node.js, Express.js, and MongoDB.",
+      "Integrated features like shopping cart, orders, and product management.",
+      "Deployed unit tests to ensure code quality.",
+      "Used Git for version control, organized tasks via Trello, and worked in Agile"
+    ],
+    technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "Git", "Trello"],
+    icon: "🛒"
+  },
+  {
+    id: 4,
+    position: "Laravel Developer",
+    company: "DESIGNET Web Agency",
+    duration: "06/2022 – 10/2022",
+    location: "Nabeul, Tunisia",
+    description: [
+      "Developed dynamic websites with Laravel, PHP, JavaScript, and MySQL.",
+      "Participated in design, coding, and functional testing.",
+      "Collaborated with the team via Git, organized tasks with Trello, and met project deadlines"
+    ],
+    technologies: ["Laravel", "PHP", "JavaScript", "MySQL", "Git", "Trello"],
+    icon: "🌐"
+  }
+];
 
-// ===================================
-// HELPER & ANIMATION COMPONENTS
-// ===================================
-const LineShadowText = ({ children, className, shadowColor = "#4079ff", ...props }) => {
-    return (
-        <motion.span
-            style={{ "--shadow-color": shadowColor }}
-            className={`relative z-0 line-shadow-effect ${className}`}
-            data-text={children}
-            {...props}
-        >
-            {children}
-        </motion.span>
-    );
-};
+
 
 // ===================================
 // KOMPONEN KARTU SERTIFIKAT
@@ -340,18 +372,205 @@ const ProjectCard = ({ project }) => {
 };
 
 // ===================================
-// KOMPONEN UTAMA SECTION PROJECT
+// KOMPONEN KARTU PENGALAMAN
+// ===================================
+const ExperienceCard = ({ experience }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const descriptionRef = useRef(null);
+  const [showReadMore, setShowReadMore] = useState(false);
+  const MAX_LINES = 3;
+  const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (descriptionRef.current) {
+      const lineHeight = parseInt(window.getComputedStyle(descriptionRef.current).lineHeight) || 24;
+      const contentHeight = descriptionRef.current.scrollHeight;
+      const maxHeight = lineHeight * MAX_LINES;
+      setShowReadMore(contentHeight > maxHeight);
+    }
+  }, [experience.description]);
+
+  const toggleExpand = (e) => {
+    e.stopPropagation();
+    setIsExpanded(!isExpanded);
+  };
+
+  return (
+    <motion.div 
+      className="relative bg-gradient-to-br from-slate-800/90 to-slate-900/90 rounded-lg p-6 border border-slate-700/50 hover:border-cyan-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10 overflow-hidden flex flex-col h-full group"
+      whileHover={{ y: -2, borderColor: 'rgba(6, 182, 212, 0.5)' }}
+      initial={false}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+    >
+      {/* Glow effect */}
+      <div className={`absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-indigo-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${isHovered ? 'opacity-100' : ''}`}></div>
+      <div className="flex-1">
+        <div className="flex items-start gap-3">
+          <div className="text-2xl flex-shrink-0 mt-1">{experience.icon}</div>
+          <div className="flex-1">
+            <h3 className="text-lg font-bold text-white mb-0.5">{experience.position}</h3>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 text-cyan-300 text-xs mb-1">
+              <span className="font-medium">{experience.company}</span>
+              <span className="hidden sm:inline text-slate-500">•</span>
+              <span className="text-slate-400">{experience.duration}</span>
+            </div>
+            {experience.location && (
+              <div className="text-slate-400 text-xs mb-3">{experience.location}</div>
+            )}
+            
+            <AnimatePresence initial={false}>
+              <motion.div
+                ref={descriptionRef}
+                className="text-slate-300 text-sm overflow-hidden"
+                initial={false}
+                animate={{
+                  height: isExpanded ? 'auto' : `${MAX_LINES * 1.5}rem`, // 3 lines of text (1.5rem line-height * 3)
+                }}
+                transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+              >
+                <ul className="space-y-2 list-disc list-inside">
+                  {experience.description.map((item, i) => (
+                    <motion.li 
+                      key={i} 
+                      className="leading-relaxed"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: i * 0.05 }}
+                    >
+                      {item}
+                    </motion.li>
+                  ))}
+                </ul>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
+      </div>
+
+      <div className="mt-3 pt-3 border-t border-slate-700/50 relative z-10">
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <div className="flex flex-wrap gap-2">
+            {experience.technologies.map((tech, idx) => (
+              <motion.span 
+                key={idx}
+                className="px-2 py-0.5 bg-slate-800/80 text-cyan-200 text-xs font-medium rounded-full border border-slate-700/50 backdrop-blur-sm"
+                whileHover={{ 
+                  scale: 1.05,
+                  backgroundColor: 'rgba(6, 182, 212, 0.1)',
+                  borderColor: 'rgba(6, 182, 212, 0.5)'
+                }}
+                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+              >
+                {tech}
+              </motion.span>
+            ))}
+          </div>
+          
+          {showReadMore && (
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+            >
+              <motion.button
+                onClick={toggleExpand}
+                className="group relative px-3 py-1 text-cyan-400 text-xs font-medium flex items-center gap-1 hover:text-cyan-300 transition-colors overflow-hidden"
+                whileHover={{ x: 1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="relative z-10 text-xs">
+                  {isExpanded ? 'Less' : 'More'}
+                </span>
+                <motion.span 
+                  className="relative z-10"
+                  animate={{
+                    rotate: isExpanded ? 180 : 0,
+                    y: isHovered ? (isExpanded ? -1 : 1) : 0
+                  }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="h-3 w-3" 
+                    viewBox="0 0 20 20" 
+                    fill="currentColor"
+                  >
+                    <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                  </svg>
+                </motion.span>
+              </motion.button>
+            </motion.div>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+
+
+// ===================================
+// KOMPONEN TEKNOLOGI
+// ===================================
+const techStack = {
+    frontend: [
+    { name: "React", icon: <FaReact className="text-[#61DAFB]" /> },
+    { name: "Next.js", icon: <SiNextdotjs className="text-white" /> },
+    { name: "JavaScript", icon: <FaJsSquare className="text-[#F7DF1E]" /> },
+    { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#38B2AC]" /> },
+    { name: "HTML5", icon: <FaHtml5 className="text-[#E34F26]" /> },
+    { name: "CSS3", icon: <FaCss3Alt className="text-[#1572B6]" /> },
+  ],
+  backend: [
+    { name: "Node.js", icon: <FaNodeJs className="text-[#339933]" /> },
+    { name: "Express", icon: <SiExpress className="text-white" /> },
+  ],
+  database: [
+    { name: "MongoDB", icon: <SiMongodb className="text-[#47A248]" /> },
+    { name: "PostgreSQL", icon: <SiPostgresql className="text-[#336791]" /> },
+  ],
+  tools: [
+    { name: "Git & GitHub", icon: <FaGithub className="text-white" /> },
+    { name: "Vercel", icon: <SiVercel className="text-white" /> },
+    { name: "Figma", icon: <FaFigma className="text-[#F24E1E]" /> },
+    { name: "Tools Lain", icon: <FaTools className="text-gray-400" /> },
+  ],
+};
+
+// ===================================
+// KOMPOSEN LINE SHADOW TEXT
+// ===================================
+const LineShadowText = ({ children, shadowColor = '#00ffdc' }) => {
+  return (
+    <span 
+      className="relative inline-block"
+      style={{
+        '--shadow-color': shadowColor,
+      }}
+    >
+      <span className="relative z-10">{children}</span>
+      <span 
+        className="absolute left-0 top-0 line-shadow-effect"
+        style={{
+          '--shadow-color': shadowColor,
+        }}
+        data-text={children}
+      />
+    </span>
+  );
+};
+
+// ===================================
+// KOMPONEN UTAMA
 // ===================================
 function ProjectSection() {
   const [activeTab, setActiveTab] = useState('Projects');
   const [projectCategory, setProjectCategory] = useState('Web/Apps');
   const [previewCertificate, setPreviewCertificate] = useState(null);
-  const { hideNavbar, showNavbar } = useNavbar();
-
-  // === CHANGE START: State dan konstanta untuk Show More/Less ===
+  const [visibleCertificatesCount, setVisibleCertificatesCount] = useState(6);
   const INITIAL_CERTIFICATES_TO_SHOW = 6;
-  const [visibleCertificatesCount, setVisibleCertificatesCount] = useState(INITIAL_CERTIFICATES_TO_SHOW);
-  // === CHANGE END ===
+  const { hideNavbar, showNavbar } = useNavbar();
 
   useEffect(() => {
     if (previewCertificate) {
@@ -368,9 +587,10 @@ function ProjectSection() {
   }, [showNavbar]);
 
   const tabs = [
+    { id: 'Experience', label: 'Experience', icon: <FaBriefcase className="text-[1.5em] mb-1" /> },
     { id: 'Projects', label: 'Projects', icon: <PiCodeBold className="text-[1.7em] mb-1" /> },
-    { id: 'Certificate', label: 'Certificates', icon: <LuBadge className="text-[1.5em] mb-1" /> },
-    { id: 'Tech Stack', label: 'Tech Stack', icon: <LiaLayerGroupSolid className="text-[1.5em] mb-1" /> },
+    { id: 'Certificate', label: 'Certificates', icon: <LuBadge className="text-[1.7em] mb-1" /> },
+    { id: 'Tech Stack', label: 'Tech Stack', icon: <LiaLayerGroupSolid className="text-[1.7em] mb-1" /> },
   ];
 
   const filteredProjects = dummyProjects.filter(
@@ -458,19 +678,76 @@ function ProjectSection() {
               className="p-6 md:p-10"
             >
               {activeTab === 'Projects' && (
-                <>
-                  <div className="flex justify-center gap-4 mb-8">
-                    <button className={`px-5 py-2 rounded-full font-semibold transition-all duration-200 border ${projectCategory === 'Web/Apps' ? 'bg-cyan-700/80 text-white border-cyan-400 shadow-cyan-500/10 shadow-lg' : 'bg-slate-900/60 text-cyan-200 border-slate-700 hover:bg-cyan-800/40 hover:text-white'}`} onClick={() => setProjectCategory('Web/Apps')}>Web/Apps</button>
-                    <button className={`px-5 py-2 rounded-full font-semibold transition-all duration-200 border ${projectCategory === '3D Design' ? 'bg-cyan-700/80 text-white border-cyan-400 shadow-cyan-500/10 shadow-lg' : 'bg-slate-900/60 text-cyan-200 border-slate-700 hover:bg-cyan-800/40 hover:text-white'}`} onClick={() => setProjectCategory('3D Design')}>3D Design</button>
+                <div className="space-y-8">
+                  <div className="flex flex-wrap justify-center gap-4 mb-8">
+                    <button
+                      key={'All'}
+                      onClick={() => setProjectCategory(null)}
+                      className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
+                        !projectCategory
+                          ? 'bg-cyan-500 text-white'
+                          : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                      }`}
+                    >
+                      All
+                    </button>
+                    <button
+                      key={'Web/Apps'}
+                      onClick={() => setProjectCategory('Web/Apps')}
+                      className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
+                        projectCategory === 'Web/Apps'
+                          ? 'bg-cyan-500 text-white'
+                          : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                      }`}
+                    >
+                      Web/Apps
+                    </button>
+                    <button
+                      key={'UI/UX'}
+                      onClick={() => setProjectCategory('UI/UX')}
+                      className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
+                        projectCategory === 'UI/UX'
+                          ? 'bg-cyan-500 text-white'
+                          : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                      }`}
+                    >
+                      UI/UX
+                    </button>
+                    <button
+                      key={'3D/Design'}
+                      onClick={() => setProjectCategory('3D/Design')}
+                      className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${
+                        projectCategory === '3D/Design'
+                          ? 'bg-cyan-500 text-white'
+                          : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
+                      }`}
+                    >
+                      3D/Design
+                    </button>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {filteredProjects.length > 0 ? (
-                      filteredProjects.map((p, i) => <ProjectCard key={i} project={p} />)
-                    ) : (
-                      <div className="col-span-full text-center text-slate-400 py-12">No projects in this category yet.</div>
-                    )}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {(projectCategory ? filteredProjects : dummyProjects).map((project, index) => (
+                      <ProjectCard key={index} project={project} />
+                    ))}
                   </div>
-                </>
+                </div>
+              )}
+
+              {activeTab === 'Experience' && (
+                <div className="space-y-8">
+                  <div className="max-w-4xl mx-auto space-y-6">
+                    {experiences.map((experience, index) => (
+                      <motion.div
+                        key={experience.id}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: index * 0.1, duration: 0.5 }}
+                      >
+                        <ExperienceCard experience={experience} />
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
               )}
               {activeTab === 'Certificate' && (
                 <div className="space-y-8">

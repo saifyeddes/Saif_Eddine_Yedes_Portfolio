@@ -184,7 +184,7 @@ const Contact = () => {
             <span className="text-white">TOUCH</span>
           </h2>
           <p className="text-xl text-slate-400 font-cascadia">
-            Mari berkolaborasi dan ciptakan sesuatu yang amazing!
+          Let's collaborate and create something amazing!
           </p>
           
           {/* Admin Button - positioned top right */}
@@ -215,18 +215,18 @@ const Contact = () => {
             {/* Contact Form Panel */}
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-600 to-emerald-600 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-1000"></div>
-              <div className="relative bg-slate-900/80 backdrop-blur-xl rounded-3xl p-8 border border-slate-700/50">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="p-3 bg-gradient-to-r from-cyan-600 to-emerald-600 rounded-full">
-                    <FaPaperPlane className="text-white text-xl" />
+              <div className="relative bg-slate-900/80 backdrop-blur-xl rounded-2xl p-6 border border-slate-700/50">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-gradient-to-r from-cyan-600 to-emerald-600 rounded-full">
+                    <FaPaperPlane className="text-white text-lg" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-white">Hubungi Saya</h3>
-                    <p className="text-slate-400">Ada yang ingin didiskusikan? Kirim pesan ke saya!</p>
+                    <h3 className="text-xl font-bold text-white">Contact Me</h3>
+                    <p className="text-slate-400 text-sm">Anything you'd like to discuss? Send me a message!</p>
                   </div>
                 </div>
 
-                <form onSubmit={handleContactSubmit} className="space-y-6">
+                <form onSubmit={handleContactSubmit} className="space-y-4">
                   <div className="group">
                     <div className="relative">
                       <FaUser className="absolute left-4 top-1/2 transform -translate-y-1/2 text-slate-400 group-focus-within:text-cyan-400 transition-colors duration-300" />
