@@ -19,9 +19,6 @@ import AdminMessages from './AdminMessages';
 import AdminLogin from './AdminLogin';
 import { useAdmin } from '../contexts/AdminContext';
 
-// JSON file to store comments
-const COMMENTS_FILE = '/comments.json';
-
 const Contact = () => {
   // States for contact form
   const [contactForm, setContactForm] = useState({
@@ -46,12 +43,12 @@ const Contact = () => {
   const { isAuthenticated } = useAdmin();
 
   // Load comments from localStorage (simulated JSON file)
-  useEffect(() => {
-    const savedComments = localStorage.getItem('portfolioComments');
-    if (savedComments) {
-      setComments(JSON.parse(savedComments));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const savedComments = localStorage.getItem('portfolioComments');
+  //   if (savedComments) {
+  //     setComments(JSON.parse(savedComments));
+  //   }
+  // }, []);
 
   // Handle contact form submission
   const handleContactSubmit = async (e) => {
