@@ -6,6 +6,7 @@ import TextGenerateEffect from "./components/text-generate-effect";
 import GradientText from "./components/GradientText";
 import { AnimatedGradientTextDemo } from "./components/AnimatedGradientTextDemo";
 import Lanyard from "./components/Lanyard/Lanyard";
+import cardLanyardImg from "./assets/Lanyard/card lanyard.png";
 import Skills from "./components/Skills";
 import { ButtonMovingBorder } from "./components/MovingBorderButton";
 import { motion } from "framer-motion";
@@ -198,14 +199,25 @@ function App() {
                 </motion.div>
               </div>
 
-              {/* 3. Render Lanyard secara kondisional */}
-              <div className="hidden lg:flex flex-1 justify-center h-[600px] w-full order-first lg:order-none">
-                {is3dEnabled && (
+              {/* 3. Render Lanyard secara kondisional ou image statique */}
+              <div className="hidden lg:flex flex-1 justify-center h-[600px] w-full order-first lg:order-none relative">
+                {is3dEnabled ? (
                   <Lanyard
                     position={[0, 0, 15]}
                     gravity={[0, -40, 0]}
                     fov={18}
                     transparent={true}
+                  />
+                ) : (
+                  <img
+                    src={cardLanyardImg}
+                    alt="Card Lanyard"
+                    className="object-contain h-[500px] w-auto shadow-2xl rounded-2xl border-4 border-cyan-300 bg-white/80 p-2 mt-40"
+                    style={{
+                      maxHeight: 400,
+                      background:
+                        "linear-gradient(120deg, #e0f7fa 0%, #ffffff 100%)",
+                    }}
                   />
                 )}
               </div>
