@@ -130,7 +130,7 @@ const Header = () => {
                 <div className="w-full flex items-center justify-between md:hidden">
                   {/* Mobile: Brand Logo & Text (Left) */}
                   <a href="#home" className="flex items-center gap-3">
-                    <img src={logoS} alt="Bangzen Logo" className="h-12 w-12 flex-shrink-0" />
+                    <img src={logoS} alt="Bangzen Logo" className="h-20 w-15 flex-shrink-0" />
                     <div>
                       <h1 className="font-moderniz text-sm text-[#00ffdc] whitespace-nowrap">Saif Eddine Yedes</h1>
                       <p className="font-moderniz text-[9px] text-[#000754]" style={{ textShadow: '0.5px 0.5px 0 #00ffdc, -0.5px -0.5px 0 #00ffdc, 0.5px -0.5px 0 #00ffdc, -0.5px 0.5px 0 #00ffdc' }}>
